@@ -221,8 +221,19 @@ azathoth-ti/
 ├── feeds/              # Configuraciones de feeds
 ├── tests/              # Tests unitarios
 ├── docs/              # Documentación
+│   ├── INSTALL.md     # Guía de instalación
+│   ├── USAGE.md      # Guía de uso
+│   └── API.md        # Documentación API REST
 └── requirements.txt
 ```
+
+## 📚 Documentación
+
+Consulta la documentación detallada en la carpeta `docs/`:
+
+- **[INSTALL.md](docs/INSTALL.md)** - Guía completa de instalación
+- **[USAGE.md](docs/USAGE.md)** - Guía detallada de uso con ejemplos
+- **[API.md](docs/API.md)** - Documentación de la REST API
 
 ## 🧪 Testing
 

@@ -68,7 +68,7 @@ class URLhausCollector(BaseCollector):
                     "url_status": entry.get("url_status"),
                     "first_seen": entry.get("date_added"),
                     "last_online": entry.get("last_online"),
-                    " Lazar urlhaus_reference": entry.get("reference"),
+                    "urlhaus_reference": entry.get("reference"),
                 },
                 description=f"URL maliciosa - {threat}"
             )

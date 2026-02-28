@@ -7,7 +7,7 @@ import re
 import ipaddress
 from typing import List, Optional, Tuple
 from urllib.parse import urlparse
-from .models import IOC, IOCType, IOCStatus
+from ..models import IOC, IOCType, IOCStatus
 
 
 class IOCNormalizer:

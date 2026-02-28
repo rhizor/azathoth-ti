@@ -196,7 +196,10 @@ async def export_csv(
 
 def run_server(host: str = "0.0.0.0", port: int = 8000, debug: bool = False):
     """Iniciar servidor."""
-    uvicorn.run(app, host=host, port=port, debug=debug)
+    import logging
+    if debug:
+        logging.basicConfig(level=logging.DEBUG)
+    uvicorn.run(app, host=host, port=port, log_level="debug" if debug else "info")
 
 
 if __name__ == "__main__":

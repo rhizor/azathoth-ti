@@ -6,7 +6,7 @@ Desduplica IOCs basándose en hash único.
 from typing import List, Dict, Set
 from datetime import datetime, timedelta
 from collections import defaultdict
-from .models import IOC, IOCType, IOCStatus
+from ..models import IOC, IOCType, IOCStatus
 
 
 class Deduplicator:

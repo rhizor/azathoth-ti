@@ -30,8 +30,8 @@ class AbuseIPDBCollector(BaseCollector):
         
         iocs = []
         
-        # Obtados recientemente
-        for days_backener IPs report in [1, 7, 30]:
+        # Obtener IPs reportadas recientemente
+        for days_back in [1, 7, 30]:
             reported_ips = await self._get_reported_ips(days_back)
             iocs.extend(reported_ips)
         

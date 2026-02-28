@@ -37,7 +37,7 @@ class Database:
                     score INTEGER,
                     metadata TEXT,
                     description TEXT,
-                    references TEXT,
+                    ioc_references TEXT,
                     enrichment_data TEXT,
                     UNIQUE(type, value)
                 )
@@ -99,7 +99,7 @@ class Database:
             score=row["score"],
             metadata=json.loads(row["metadata"]) if row["metadata"] else {},
             description=row["description"],
-            references=json.loads(row["references"]) if row["references"] else [],
+            references=json.loads(row["ioc_references"]) if row["ioc_references"] else [],
             enrichment_data=json.loads(row["enrichment_data"]) if row["enrichment_data"] else {}
         )
     
@@ -110,7 +110,7 @@ class Database:
                 INSERT OR REPLACE INTO iocs (
                     id, type, value, source, first_seen, last_seen,
                     status, tags, confidence, score, metadata,
-                    description, references, enrichment_data
+                    description, ioc_references, enrichment_data
                 ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 ioc.id,
@@ -141,7 +141,7 @@ class Database:
                         INSERT OR REPLACE INTO iocs (
                             id, type, value, source, first_seen, last_seen,
                             status, tags, confidence, score, metadata,
-                            description, references, enrichment_data
+                            description, ioc_references, enrichment_data
                         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                     """, (
                         ioc.id,

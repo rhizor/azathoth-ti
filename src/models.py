@@ -50,6 +50,7 @@ class IOC:
     type: IOCType
     value: str
     source: str
+    id: Optional[str] = None
     first_seen: datetime = field(default_factory=datetime.now)
     last_seen: datetime = field(default_factory=datetime.now)
     status: IOCStatus = IOCStatus.ACTIVE
@@ -63,7 +64,8 @@ class IOC:
     
     def __post_init__(self):
         """Calcular hash único del IOC."""
-        self.id = self._compute_hash()
+        if self.id is None:
+            self.id = self._compute_hash()
     
     def _compute_hash(self) -> str:
         """Computar hash único del IOC."""

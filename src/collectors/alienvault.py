@@ -54,17 +54,18 @@ class AlienVaultCollector(BaseCollector):
         """Extraer IOCs desde un pulse."""
         iocs = []
         source = f"alienvault:{pulse.get('id', 'unknown')}"
+        pulse_name = pulse.get('name', '')
         
         # Extraer IPs
         if "indicators" in pulse:
             for indicator in pulse["indicators"]:
-                ioc = self._parse_indicator(indicator, source)
+                ioc = self._parse_indicator(indicator, source, pulse_name)
                 if ioc:
                     iocs.append(ioc)
         
         return iocs
     
-    def _parse_indicator(self, indicator: Dict, source: str) -> IOC:
+    def _parse_indicator(self, indicator: Dict, source: str, pulse_name: str = "") -> IOC:
         """Parsear un indicador a IOC."""
         indicator_type = indicator.get("type", "").lower()
         value = indicator.get("indicator", "")
@@ -100,6 +101,6 @@ class AlienVaultCollector(BaseCollector):
             value=value,
             source=source,
             tags=tags,
-            description=pulse.get("name", ""),
-            references=[f"https://otx.alienvault.com/pulse/{pulse.get('id', '')}"]
+            description=pulse_name,
+            references=[f"https://otx.alienvault.com/pulse/{source.split(':')[1] if ':' in source else ''}"]
         )
